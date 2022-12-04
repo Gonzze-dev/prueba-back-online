@@ -1,7 +1,8 @@
 import server from "./server";
 import { AppDataSource } from "./Connection/Connection";
+import { APP_PORT } from "./config";
 
-const puerto = 3000;
+const puerto = Number(APP_PORT);
 
 const main = () =>
 {
