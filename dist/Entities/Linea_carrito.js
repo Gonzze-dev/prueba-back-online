@@ -10,20 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Linea_carrito = void 0;
+const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 const Libro_1 = require("./Libro");
 const Usuario_1 = require("./Usuario");
 let Linea_carrito = class Linea_carrito extends typeorm_1.BaseEntity {
 };
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.ID),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Linea_carrito.prototype, "nro_linea", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => String),
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Linea_carrito.prototype, "cantidad", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => Libro_1.Libro),
     (0, typeorm_1.ManyToOne)((type) => Libro_1.Libro, (libro) => libro.isbn, {
         onUpdate: 'CASCADE',
         eager: true
@@ -38,6 +42,7 @@ __decorate([
     __metadata("design:type", Usuario_1.Usuario)
 ], Linea_carrito.prototype, "usuario", void 0);
 Linea_carrito = __decorate([
+    (0, type_graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()
 ], Linea_carrito);
 exports.Linea_carrito = Linea_carrito;

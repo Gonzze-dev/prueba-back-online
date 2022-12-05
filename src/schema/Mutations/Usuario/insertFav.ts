@@ -1,12 +1,11 @@
-import { GraphQLNonNull, GraphQLString} from "graphql";
 import { verify } from "jsonwebtoken";
 
 import { JWT_SECRET } from "../../../config"
 import { insertFav } from "../../../ORM_Queries/Usuario/insertFav";
-import { jSendUser, TSendUser } from "../../TypesDefs/sendUser";
+import { SendUsuario } from "../../../SendTypes/SendUsuario";
 
-async function fInsertFav(isbn: string, tokenUser: string) {
-	let msj = jSendUser()
+export async function InsertFav(isbn: string, tokenUser: string) {
+	const msj = new SendUsuario()
 
 	try {
 		const id = parseInt(<string>verify(tokenUser, JWT_SECRET))
@@ -23,16 +22,3 @@ async function fInsertFav(isbn: string, tokenUser: string) {
 		return msj;
 	}
 }
-
-export const InsertFav = {
-	type: TSendUser,
-	args: {
-		isbn: { type: new GraphQLNonNull(GraphQLString) },
-		tokenUser: { type: new GraphQLNonNull(GraphQLString) },
-	},
-	async resolve(_: any, args: any) {
-		const result = await fInsertFav(args.isbn, args.tokenUser);
-
-		return result;
-	},
-};

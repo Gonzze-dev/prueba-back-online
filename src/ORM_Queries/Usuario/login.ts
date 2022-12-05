@@ -4,20 +4,16 @@ export async function login(correo: string, contrasenia: string)
 {
     const usuario = await Usuario.find(
         {
-            relations:{
-                orden: {
-                    direccion_entrega: {
-                        ciudad: {
-                            provincia:{
-                                pais: true
-                            }
-                        }
-                    }
+            relations:
+            {
+                orden:
+                {
+                    direccion_entrega: true
                 },
                 favorito: true,
                 carrito: {
                     libro: true
-                },
+                }
             },
             where:
             {

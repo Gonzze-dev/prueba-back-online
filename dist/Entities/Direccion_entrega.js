@@ -10,30 +10,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Direccion_entrega = void 0;
+const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 const Ciudad_1 = require("./Ciudad");
 const Usuario_1 = require("./Usuario");
 let Direccion_entrega = class Direccion_entrega extends typeorm_1.BaseEntity {
 };
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.ID),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Direccion_entrega.prototype, "id", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Direccion_entrega.prototype, "direccion", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)({
         nullable: true
     }),
     __metadata("design:type", String)
 ], Direccion_entrega.prototype, "infoAdicional", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.Int, { nullable: true }),
     (0, typeorm_1.Column)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Direccion_entrega.prototype, "dni", void 0);
 __decorate([
+    (0, type_graphql_1.Field)({
+        nullable: true
+    }),
     (0, typeorm_1.Column)({
         nullable: true
     }),
@@ -47,6 +55,7 @@ __decorate([
     __metadata("design:type", Usuario_1.Usuario)
 ], Direccion_entrega.prototype, "usuario", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => Ciudad_1.Ciudad),
     (0, typeorm_1.ManyToOne)((type) => Ciudad_1.Ciudad, {
         onUpdate: 'CASCADE',
         eager: true
@@ -55,6 +64,7 @@ __decorate([
     __metadata("design:type", Ciudad_1.Ciudad)
 ], Direccion_entrega.prototype, "ciudad", void 0);
 Direccion_entrega = __decorate([
+    (0, type_graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()
 ], Direccion_entrega);
 exports.Direccion_entrega = Direccion_entrega;

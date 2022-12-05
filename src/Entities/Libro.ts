@@ -1,3 +1,5 @@
+import { Field, Float, ID, Int, ObjectType } from "type-graphql";
+
 import { BaseEntity,
         Column, 
         Entity, 
@@ -15,22 +17,28 @@ import { Opinion } from "./Opinion";
 import { Puntuacion } from "./Puntuacion";
 import { Tema } from "./Tema";
 
+@ObjectType()
 @Entity()
 export class Libro extends BaseEntity
 {
     
+    @Field(type => ID)
     @PrimaryColumn()
     isbn!: string;
 
+    @Field()
     @Column('text')
     url_imagen!: string;
 
+    @Field()
     @Column()
     titulo!: string;
 
+    @Field()
     @Column()
     fecha_edicion!: string;
 
+    @Field(type => Float)
     @Column({
         type: 'decimal',
         precision: 10, 
@@ -38,18 +46,22 @@ export class Libro extends BaseEntity
     })
     precio!: number;
 
+    @Field(type => Int)
     @Column()
     stock!: number;
 
+    @Field()
     @Column()
     descripcion!: string;
 
+    @Field(type => String)
     @Column({
         type: 'timestamp',
         default: () => 'CURRENT_TIMESTAMP'
     })
     fecha_ingreso!: Date;
 
+    @Field(type => Float)
     @Column({
         type: 'decimal',
         precision: 4, 
@@ -58,6 +70,7 @@ export class Libro extends BaseEntity
     })
     descuento: number;
 
+    @Field(type => Editorial)
     @ManyToOne(() => Editorial, (editorial) => editorial.id,
     {
         onUpdate: 'CASCADE',
@@ -68,6 +81,7 @@ export class Libro extends BaseEntity
     })
     editorial!: Editorial;
 
+    @Field(type => Idioma)
     @ManyToOne(() => Idioma, (idioma) => idioma.id,
         {
             onUpdate: 'CASCADE',
@@ -78,6 +92,7 @@ export class Libro extends BaseEntity
     })
     idioma!: Idioma;
 
+    @Field(type => [Tema])
     @ManyToMany((type) => Tema, {
         onUpdate: 'CASCADE',
         eager: true
@@ -93,6 +108,7 @@ export class Libro extends BaseEntity
     })
     tema!: Tema[];
 
+    @Field(type => [Autor])
     @ManyToMany((type) => Autor, {
         onUpdate: 'CASCADE',
         eager: true
@@ -111,13 +127,15 @@ export class Libro extends BaseEntity
     })
     autor!: Autor[];
     
+    @Field(type => [Opinion], {nullable: true})
     @OneToMany((type) => Opinion, opinion => opinion.libro, {
         eager: true
     })
-    public opinion: Opinion[];
+    public opinion?: Opinion[];
 
+    @Field(type => [Puntuacion], {nullable: true})
     @OneToMany((type) => Puntuacion, puntuacion => puntuacion.libro, {
         eager: true
     })
-    puntuacion: Puntuacion[];
+    puntuacion?: Puntuacion[];
 }

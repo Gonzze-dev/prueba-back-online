@@ -27,8 +27,10 @@ function insertFav(isbn, id) {
                 id: id
             }
         });
-        usuario[0].favorito.push(libro[0]);
-        yield usuario[0].save();
+        if (usuario[0].favorito) {
+            usuario[0].favorito.push(libro[0]);
+            yield usuario[0].save();
+        }
         usuario = yield Usuario_1.Usuario.find({
             relations: {
                 favorito: true

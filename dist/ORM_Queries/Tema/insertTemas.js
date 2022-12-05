@@ -16,7 +16,6 @@ function insertTemas(temas) {
         const temasBd = [];
         temas.forEach((tema) => __awaiter(this, void 0, void 0, function* () {
             temasBd.push(yield (0, insertTema_1.insertTema)(tema));
-            console.log(yield temasBd);
         }));
         return temasBd;
     });

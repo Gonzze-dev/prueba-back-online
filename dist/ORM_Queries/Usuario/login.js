@@ -16,18 +16,12 @@ function login(correo, contrasenia) {
         const usuario = yield Usuario_1.Usuario.find({
             relations: {
                 orden: {
-                    direccion_entrega: {
-                        ciudad: {
-                            provincia: {
-                                pais: true
-                            }
-                        }
-                    }
+                    direccion_entrega: true
                 },
                 favorito: true,
                 carrito: {
                     libro: true
-                },
+                }
             },
             where: {
                 correo: correo,

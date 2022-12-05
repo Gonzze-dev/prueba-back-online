@@ -9,13 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Getlibros = exports.fGetLibros = void 0;
-const graphql_1 = require("graphql");
+exports.GetLibros = void 0;
 const getAllLibros_1 = require("../../../ORM_Queries/Libro/getAllLibros");
 const getAllLibrosByCategoria_1 = require("../../../ORM_Queries/Libro/getAllLibrosByCategoria");
 const getLibroByIsbn_1 = require("../../../ORM_Queries/Libro/getLibroByIsbn");
 const getLibrosByReference_1 = require("../../../ORM_Queries/Libro/getLibrosByReference");
-const sendLibro_1 = require("../../TypesDefs/sendLibro");
+const SendLibro_1 = require("../../../SendTypes/SendLibro");
 function selectFunction(args) {
     return __awaiter(this, void 0, void 0, function* () {
         if (args.categoria
@@ -33,9 +32,9 @@ function selectFunction(args) {
         return yield (0, getAllLibros_1.getAllLibros)();
     });
 }
-function fGetLibros(args) {
+function GetLibros(args) {
     return __awaiter(this, void 0, void 0, function* () {
-        const msj = (0, sendLibro_1.jSendLibro)();
+        const msj = new SendLibro_1.SendLibro();
         try {
             const libro = yield selectFunction(args);
             msj.message = "Libros obtenidos con exito!";
@@ -48,18 +47,4 @@ function fGetLibros(args) {
         }
     });
 }
-exports.fGetLibros = fGetLibros;
-exports.Getlibros = {
-    type: sendLibro_1.TSendLibro,
-    args: {
-        categoria: { type: graphql_1.GraphQLString },
-        isbn: { type: graphql_1.GraphQLString },
-        titulo: { type: graphql_1.GraphQLString }
-    },
-    resolve(_, args) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const result = yield fGetLibros(args);
-            return result;
-        });
-    },
-};
+exports.GetLibros = GetLibros;

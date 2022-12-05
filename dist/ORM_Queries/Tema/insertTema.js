@@ -22,17 +22,6 @@ function insertTema(tema) {
             obj_tema.url_imagen = tema.url_imagen;
             yield obj_tema.save();
         }
-        // console.log('\n')
-        // console.log('\n')
-        // console.log('\n')
-        // console.log(obj_tema.nombre)
-        // console.log(tema.nombre)
-        // console.log(obj_tema.url_imagen)
-        // console.log(tema.url_imagen)
-        // console.log(await getElementByName(tema.nombre, Tema))
-        // console.log('\n')
-        // console.log('\n')
-        // console.log('\n')
         return yield (0, getElementByName_1.getElementByName)(tema.nombre, Tema_1.Tema);
     });
 }

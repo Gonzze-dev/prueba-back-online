@@ -14,21 +14,6 @@ const Usuario_1 = require("../../Entities/Usuario");
 function getUsuarioById(id) {
     return __awaiter(this, void 0, void 0, function* () {
         const usuario = yield Usuario_1.Usuario.find({
-            relations: {
-                orden: {
-                    direccion_entrega: {
-                        ciudad: {
-                            provincia: {
-                                pais: true
-                            }
-                        }
-                    }
-                },
-                favorito: true,
-                carrito: {
-                    libro: true
-                },
-            },
             where: {
                 id: id
             }

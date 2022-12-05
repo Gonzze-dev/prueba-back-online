@@ -10,14 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InsertFav = void 0;
-const graphql_1 = require("graphql");
 const jsonwebtoken_1 = require("jsonwebtoken");
 const config_1 = require("../../../config");
 const insertFav_1 = require("../../../ORM_Queries/Usuario/insertFav");
-const sendUser_1 = require("../../TypesDefs/sendUser");
-function fInsertFav(isbn, tokenUser) {
+const SendUsuario_1 = require("../../../SendTypes/SendUsuario");
+function InsertFav(isbn, tokenUser) {
     return __awaiter(this, void 0, void 0, function* () {
-        let msj = (0, sendUser_1.jSendUser)();
+        const msj = new SendUsuario_1.SendUsuario();
         try {
             const id = parseInt((0, jsonwebtoken_1.verify)(tokenUser, config_1.JWT_SECRET));
             const usuario = yield (0, insertFav_1.insertFav)(isbn, id);
@@ -32,16 +31,4 @@ function fInsertFav(isbn, tokenUser) {
         }
     });
 }
-exports.InsertFav = {
-    type: sendUser_1.TSendUser,
-    args: {
-        isbn: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLString) },
-        tokenUser: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLString) },
-    },
-    resolve(_, args) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const result = yield fInsertFav(args.isbn, args.tokenUser);
-            return result;
-        });
-    },
-};
+exports.InsertFav = InsertFav;

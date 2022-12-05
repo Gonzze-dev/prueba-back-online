@@ -8,9 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAutor = void 0;
-const graphql_1 = require("graphql");
 function fUpdateAutor(id, nombre) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -21,16 +18,3 @@ function fUpdateAutor(id, nombre) {
         }
     });
 }
-exports.UpdateAutor = {
-    type: graphql_1.GraphQLString,
-    args: {
-        id: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLInt) },
-        nombre: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLString) }
-    },
-    resolve(_, args) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const result = fUpdateAutor(args.id, args.nombre);
-            return result;
-        });
-    },
-};

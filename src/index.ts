@@ -1,15 +1,17 @@
-import server from "./server";
+import "reflect-metadata";
+import {startServer} from "./server";
 import { AppDataSource } from "./Connection/Connection";
-import { APP_PORT } from "./config";
 
-const puerto = Number(APP_PORT);
+const puerto = 3000;
 
-const main = () =>
+async function main()
 {
     try
     {
+        
         AppDataSource.initialize();
-        server.listen(puerto);
+        const app = await startServer();
+        app.listen(puerto);
         console.log(`server on http://localhost:${puerto}/graphql`);
     }
     catch(err)
@@ -18,4 +20,4 @@ const main = () =>
     }
 }
 
-main();
+ main();

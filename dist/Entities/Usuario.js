@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Usuario = void 0;
+const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 const Libro_1 = require("./Libro");
 const Linea_carrito_1 = require("./Linea_carrito");
@@ -19,30 +20,36 @@ const Puntuacion_1 = require("./Puntuacion");
 let Usuario = class Usuario extends typeorm_1.BaseEntity {
 };
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.ID),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Usuario.prototype, "id", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Usuario.prototype, "nombre", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)({
         unique: true
     }),
     __metadata("design:type", String)
 ], Usuario.prototype, "correo", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Usuario.prototype, "contrasenia", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)({
         default: false
     }),
     __metadata("design:type", Boolean)
 ], Usuario.prototype, "admin", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => [Libro_1.Libro], { nullable: true }),
     (0, typeorm_1.ManyToMany)((type) => Libro_1.Libro, {
         onUpdate: 'CASCADE',
     }),
@@ -66,14 +73,17 @@ __decorate([
     __metadata("design:type", Array)
 ], Usuario.prototype, "puntuacion", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => [Orden_1.Orden], { nullable: true }),
     (0, typeorm_1.OneToMany)((type) => Orden_1.Orden, orden => orden.usuario),
     __metadata("design:type", Array)
 ], Usuario.prototype, "orden", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => [Linea_carrito_1.Linea_carrito], { nullable: true }),
     (0, typeorm_1.OneToMany)((type) => Linea_carrito_1.Linea_carrito, linea_carrito => linea_carrito.usuario),
     __metadata("design:type", Array)
 ], Usuario.prototype, "carrito", void 0);
 Usuario = __decorate([
+    (0, type_graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()
 ], Usuario);
 exports.Usuario = Usuario;

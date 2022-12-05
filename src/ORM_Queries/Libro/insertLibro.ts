@@ -1,10 +1,9 @@
+import { AppDataSource } from "../../Connection/Connection";
 import { Libro } from "../../Entities/Libro"
 import { insertAutor } from "../Autor/InsertAutor";
-import { insertAutores } from "../Autor/insertAutores";
 import { insertEditorial } from "../Editorial/insertEditorial";
 import { insertIdioma } from "../Idioma/insertIdioma";
 import { insertTema } from "../Tema/insertTema";
-import { insertTemas } from "../Tema/insertTemas";
 import { existsLibro } from "./existsLibro"
 
 export async function insertLibro(isbn: string,
@@ -14,8 +13,8 @@ export async function insertLibro(isbn: string,
                                     precio: number,
                                     stock: number,
                                     descripcion: string,
-                                    fecha_ingreso: Date,
-                                    descuento: number,
+                                    fecha_ingreso: string = '',
+                                    descuento: number = 0,
                                     idioma: string,
                                     editorial: string,
                                     autor: Array<string>,
@@ -34,20 +33,24 @@ export async function insertLibro(isbn: string,
         obj_libro.precio = precio;
         obj_libro.stock = stock;
         obj_libro.descripcion = descripcion;
+
         if (fecha_ingreso)
         {
-            obj_libro.fecha_ingreso = fecha_ingreso;
+            obj_libro.fecha_ingreso = new Date(fecha_ingreso);
         }
-        if (descuento)
+        if (descuento > 0)
         {
             obj_libro.descuento = descuento;
         }
+
         obj_libro.idioma = await insertIdioma(idioma);
         obj_libro.editorial = await insertEditorial(editorial);
+
         obj_libro.autor = []
         autor.forEach(async autor => {
             obj_libro.autor.push(await insertAutor(autor));
         });
+        
         obj_libro.tema = []
         tema.forEach(async tema => {
             obj_libro.tema.push(await insertTema(tema));

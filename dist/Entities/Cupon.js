@@ -10,14 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cupon = void 0;
+const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 let Cupon = class Cupon extends typeorm_1.BaseEntity {
 };
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.ID),
     (0, typeorm_1.PrimaryColumn)(),
     __metadata("design:type", String)
 ], Cupon.prototype, "codigo_cupon", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.Float),
     (0, typeorm_1.Column)({
         type: 'decimal',
         precision: 3,
@@ -26,12 +29,14 @@ __decorate([
     __metadata("design:type", Number)
 ], Cupon.prototype, "porc_descuento", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)({
         default: false
     }),
     __metadata("design:type", Boolean)
 ], Cupon.prototype, "utilizado", void 0);
 Cupon = __decorate([
+    (0, type_graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()
 ], Cupon);
 exports.Cupon = Cupon;

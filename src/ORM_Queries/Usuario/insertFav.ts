@@ -30,11 +30,14 @@ export async function insertFav(isbn: string, id: number)
             }
         }
     )
-
-    usuario[0].favorito.push(libro[0]);
-
-    await usuario[0].save();
     
+    if (usuario[0].favorito)
+    {
+        usuario[0].favorito.push(libro[0]);
+        await usuario[0].save();
+    }
+    
+
     usuario = await Usuario.find(
         {
             relations:

@@ -8,10 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetIdiomaById = void 0;
-const graphql_1 = require("graphql");
-const idioma_1 = require("../../TypesDefs/idioma");
 function fGetIdiomaById(id) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -23,15 +19,3 @@ function fGetIdiomaById(id) {
         }
     });
 }
-exports.GetIdiomaById = {
-    type: idioma_1.TIdioma,
-    args: {
-        id: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLInt) },
-    },
-    resolve(_, args) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const result = yield fGetIdiomaById(args.id);
-            return result;
-        });
-    },
-};

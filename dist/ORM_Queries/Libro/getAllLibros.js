@@ -13,16 +13,19 @@ exports.getAllLibros = void 0;
 const Libro_1 = require("../../Entities/Libro");
 function getAllLibros() {
     return __awaiter(this, void 0, void 0, function* () {
-        const libro = yield Libro_1.Libro.find({
-            relations: {
-                opinion: {
-                    usuario: true
-                },
-                puntuacion: {
-                    usuario: true
-                }
-            }
-        });
+        const libro = yield Libro_1.Libro.find(
+        // {
+        //     relations:
+        //     {
+        //         opinion:{
+        //             usuario: false
+        //         },
+        //         puntuacion:{
+        //             usuario: false
+        //         }
+        //     }
+        // }
+        );
         return libro;
     });
 }

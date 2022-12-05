@@ -8,10 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetAutorById = void 0;
-const graphql_1 = require("graphql");
-const autor_1 = require("../../TypesDefs/autor");
 function fGetAutorById(id) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -23,15 +19,3 @@ function fGetAutorById(id) {
         }
     });
 }
-exports.GetAutorById = {
-    type: autor_1.TAutor,
-    args: {
-        id: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLInt) },
-    },
-    resolve(_, args) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const result = yield fGetAutorById(args.id);
-            return result;
-        });
-    },
-};

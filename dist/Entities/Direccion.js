@@ -10,52 +10,61 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Direccion = void 0;
+const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 const Ciudad_1 = require("./Ciudad");
 const Usuario_1 = require("./Usuario");
 let Direccion = class Direccion extends typeorm_1.BaseEntity {
 };
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.ID),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Direccion.prototype, "id", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Direccion.prototype, "direccion", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)({
         nullable: true
     }),
     __metadata("design:type", String)
 ], Direccion.prototype, "infoAdicional", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.Int),
     (0, typeorm_1.Column)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Direccion.prototype, "dni", void 0);
 __decorate([
+    (0, type_graphql_1.Field)({
+        nullable: true
+    }),
     (0, typeorm_1.Column)({
         nullable: true
     }),
     __metadata("design:type", String)
 ], Direccion.prototype, "telefono", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)((type) => Usuario_1.Usuario, {
-        onUpdate: 'CASCADE',
-        eager: true
+    (0, typeorm_1.ManyToOne)((type) => Usuario_1.Usuario, {
+        onUpdate: 'CASCADE'
     }),
     (0, typeorm_1.JoinColumn)({ name: 'id_usuario' }),
     __metadata("design:type", Usuario_1.Usuario)
 ], Direccion.prototype, "usuario", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => Ciudad_1.Ciudad),
     (0, typeorm_1.ManyToOne)((type) => Ciudad_1.Ciudad, {
         onUpdate: 'CASCADE',
         eager: true
     }),
     (0, typeorm_1.JoinColumn)({ name: 'cp' }),
     __metadata("design:type", Ciudad_1.Ciudad)
-], Direccion.prototype, "cp", void 0);
+], Direccion.prototype, "ciudad", void 0);
 Direccion = __decorate([
+    (0, type_graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()
 ], Direccion);
 exports.Direccion = Direccion;

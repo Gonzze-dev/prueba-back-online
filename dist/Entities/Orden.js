@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Orden = void 0;
+const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 const Cupon_1 = require("./Cupon");
 const Direccion_entrega_1 = require("./Direccion_entrega");
@@ -18,10 +19,12 @@ const Usuario_1 = require("./Usuario");
 let Orden = class Orden extends typeorm_1.BaseEntity {
 };
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.ID),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Orden.prototype, "id", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => String),
     (0, typeorm_1.Column)({
         type: 'timestamp',
         default: () => 'CURRENT_TIMESTAMP'
@@ -29,6 +32,7 @@ __decorate([
     __metadata("design:type", Date)
 ], Orden.prototype, "fecha", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.Float),
     (0, typeorm_1.Column)({
         type: 'decimal',
         precision: 18,
@@ -37,6 +41,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Orden.prototype, "total", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => Cupon_1.Cupon, { nullable: true }),
     (0, typeorm_1.OneToOne)((type) => Cupon_1.Cupon, {
         onUpdate: 'CASCADE',
         eager: true
@@ -52,6 +57,7 @@ __decorate([
     __metadata("design:type", Usuario_1.Usuario)
 ], Orden.prototype, "usuario", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => Direccion_entrega_1.Direccion_entrega),
     (0, typeorm_1.ManyToOne)((type) => Direccion_entrega_1.Direccion_entrega, (direccion) => direccion.id, {
         onUpdate: 'CASCADE',
     }),
@@ -59,6 +65,7 @@ __decorate([
     __metadata("design:type", Direccion_entrega_1.Direccion_entrega)
 ], Orden.prototype, "direccion_entrega", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => Orden_detalle_1.Orden_detalle),
     (0, typeorm_1.OneToMany)(() => Orden_detalle_1.Orden_detalle, (orden_detalle) => orden_detalle.orden, {
         onUpdate: 'CASCADE',
         eager: true
@@ -66,6 +73,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Orden.prototype, "orden_detalle", void 0);
 Orden = __decorate([
+    (0, type_graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()
 ], Orden);
 exports.Orden = Orden;

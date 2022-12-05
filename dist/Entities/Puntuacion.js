@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Puntuacion = void 0;
+const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 const Libro_1 = require("./Libro");
 const Usuario_1 = require("./Usuario");
@@ -20,10 +21,12 @@ __decorate([
     __metadata("design:type", String)
 ], Puntuacion.prototype, "usuario_libro", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.Int),
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Puntuacion.prototype, "puntuacion", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => Usuario_1.Usuario),
     (0, typeorm_1.ManyToOne)((type) => Usuario_1.Usuario, {
         onUpdate: 'CASCADE',
     }),
@@ -38,6 +41,7 @@ __decorate([
     __metadata("design:type", Libro_1.Libro)
 ], Puntuacion.prototype, "libro", void 0);
 Puntuacion = __decorate([
+    (0, type_graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()
 ], Puntuacion);
 exports.Puntuacion = Puntuacion;

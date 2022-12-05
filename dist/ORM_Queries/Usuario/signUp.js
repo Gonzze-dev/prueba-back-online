@@ -11,16 +11,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.signUp = void 0;
 const Usuario_1 = require("../../Entities/Usuario");
-function signUp(args) {
+function signUp(nombre, correo, contrasenia) {
     return __awaiter(this, void 0, void 0, function* () {
         const obj_usuario = new Usuario_1.Usuario();
-        obj_usuario.nombre = args.nombre;
-        obj_usuario.correo = args.correo;
-        obj_usuario.contrasenia = args.contrasenia;
+        obj_usuario.nombre = nombre;
+        obj_usuario.correo = correo;
+        obj_usuario.contrasenia = contrasenia;
         yield obj_usuario.save();
         const usuario = yield Usuario_1.Usuario.find({
             where: {
-                correo: args.correo
+                correo: correo
             }
         });
         return usuario;

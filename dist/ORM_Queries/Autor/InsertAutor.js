@@ -15,9 +15,11 @@ const exists_1 = require("../Utilities/exists");
 const getElementByName_1 = require("../Utilities/getElementByName");
 function insertAutor(nombreAutor) {
     return __awaiter(this, void 0, void 0, function* () {
-        const existeAutor = yield (0, exists_1.existsName)(nombreAutor, Autor_1.Autor);
+        const existeAutor = (0, exists_1.existsName)(nombreAutor, Autor_1.Autor);
+        const obj_autor = new Autor_1.Autor();
+        // const queryRunner = AppDataSource.createQueryRunner()
+        // await queryRunner.connect()
         if (!existeAutor) {
-            const obj_autor = new Autor_1.Autor();
             obj_autor.nombre = nombreAutor;
             yield obj_autor.save();
         }

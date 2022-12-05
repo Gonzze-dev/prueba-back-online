@@ -15,14 +15,16 @@ const getCarritoUsuario_1 = require("./getCarritoUsuario");
 const mercadopago = require("mercadopago");
 function getItems(usuario) {
     let items = [];
-    usuario.carrito.forEach(linea_carrito => {
-        items.push({
-            title: linea_carrito.libro.titulo,
-            quantity: (+linea_carrito.cantidad),
-            currency_id: "ARS",
-            unit_price: (+linea_carrito.libro.precio)
+    if (usuario.carrito) {
+        usuario.carrito.forEach(linea_carrito => {
+            items.push({
+                title: linea_carrito.libro.titulo,
+                quantity: (+linea_carrito.cantidad),
+                currency_id: "ARS",
+                unit_price: (+linea_carrito.libro.precio)
+            });
         });
-    });
+    }
     return items;
 }
 function generateLinkMercadoPago(items) {

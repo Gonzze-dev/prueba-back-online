@@ -16,7 +16,7 @@ const insertEditorial_1 = require("../Editorial/insertEditorial");
 const insertIdioma_1 = require("../Idioma/insertIdioma");
 const insertTema_1 = require("../Tema/insertTema");
 const existsLibro_1 = require("./existsLibro");
-function insertLibro(isbn, imagen, titulo, fecha_edicion, precio, stock, descripcion, fecha_ingreso, descuento, idioma, editorial, autor, tema) {
+function insertLibro(isbn, imagen, titulo, fecha_edicion, precio, stock, descripcion, fecha_ingreso = '', descuento = 0, idioma, editorial, autor, tema) {
     return __awaiter(this, void 0, void 0, function* () {
         const exists = yield (0, existsLibro_1.existsLibro)(isbn);
         const obj_libro = new Libro_1.Libro();
@@ -29,9 +29,9 @@ function insertLibro(isbn, imagen, titulo, fecha_edicion, precio, stock, descrip
             obj_libro.stock = stock;
             obj_libro.descripcion = descripcion;
             if (fecha_ingreso) {
-                obj_libro.fecha_ingreso = fecha_ingreso;
+                obj_libro.fecha_ingreso = new Date(fecha_ingreso);
             }
-            if (descuento) {
+            if (descuento > 0) {
                 obj_libro.descuento = descuento;
             }
             obj_libro.idioma = yield (0, insertIdioma_1.insertIdioma)(idioma);

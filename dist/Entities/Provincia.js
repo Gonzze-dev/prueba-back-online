@@ -10,26 +10,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Provincia = void 0;
+const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 const Pais_1 = require("./Pais");
 let Provincia = class Provincia extends typeorm_1.BaseEntity {
 };
 __decorate([
+    (0, type_graphql_1.Field)(type => type_graphql_1.ID),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Provincia.prototype, "id", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Provincia.prototype, "nombre", void 0);
 __decorate([
+    (0, type_graphql_1.Field)(type => Pais_1.Pais),
     (0, typeorm_1.ManyToOne)((type) => Pais_1.Pais, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        eager: true
     }),
     (0, typeorm_1.JoinColumn)({ name: 'id_pais' }),
     __metadata("design:type", Number)
 ], Provincia.prototype, "pais", void 0);
 Provincia = __decorate([
+    (0, type_graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()
 ], Provincia);
 exports.Provincia = Provincia;
