@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const server_1 = require("./server");
 const Connection_1 = require("./Connection/Connection");
-const puerto = 3000;
+const puerto = Number(process.env.PORT);
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {

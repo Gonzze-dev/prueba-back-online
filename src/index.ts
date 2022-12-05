@@ -2,7 +2,7 @@ import "reflect-metadata";
 import {startServer} from "./server";
 import { AppDataSource } from "./Connection/Connection";
 
-const puerto = 3000;
+const puerto = Number(process.env.PORT);
 
 async function main()
 {

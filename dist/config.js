@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MERCADO_PAGO_TOKEN = exports.JWT_SECRET = exports.DB_NAME = exports.DB_PORT = exports.DB_HOST = exports.DB_PASSWORD = exports.DB_USERNAME = exports.APP_PORT = void 0;
+exports.MERCADO_PAGO_TOKEN = exports.JWT_SECRET = exports.DB_NAME = exports.DB_PORT = exports.DB_HOST = exports.DB_PASSWORD = exports.DB_USERNAME = exports.PORT = void 0;
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
-exports.APP_PORT = process.env.APP_PORT || '3000';
+exports.PORT = process.env.PORT || '3000';
 exports.DB_USERNAME = process.env.DB_USERNAME || 'postgres';
 exports.DB_PASSWORD = process.env.DB_PASSWORD || '1234';
 exports.DB_HOST = process.env.DB_HOST || 'localhost';
