@@ -61,14 +61,15 @@ export class Libro extends BaseEntity
     })
     fecha_ingreso!: Date;
 
-    @Field(type => Float, {nullable: true})
+    @Field(type => Float)
     @Column({
         type: 'decimal',
         precision: 4, 
         scale: 2,
-        nullable: true
+        nullable: true,
+        default: 0
     })
-    descuento?: number;
+    descuento: number;
 
     @Field(type => Editorial)
     @ManyToOne(() => Editorial, (editorial) => editorial.id,
