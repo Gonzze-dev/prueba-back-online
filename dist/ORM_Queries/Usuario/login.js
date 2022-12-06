@@ -28,21 +28,17 @@ function login(correo, contrasenia) {
                 contrasenia: contrasenia
             }
         });
-        // const usuario = arrayUsuario[0]
-        // if (usuario && usuario.carrito )
-        // {
-        //     for (let i = 0; i < usuario.carrito.length; i++) 
-        //     {
-        //         for (let j = 0; j < usuario.carrito.length; j++) 
-        //         {
-        //             if (usuario.carrito[i].libro.isbn = usuario.carrito[j].libro.isbn)
-        //             {
-        //                 usuario.carrito[i].cantidad = usuario.carrito[i].cantidad + (+ usuario.carrito[i].cantidad)
-        //                 usuario.carrito[j].remove()
-        //             }
-        //         }
-        //     }
-        // }
+        const usuario = arrayUsuario[0];
+        if (usuario && usuario.carrito) {
+            for (let i = 0; i < usuario.carrito.length; i++) {
+                for (let j = 0; j < usuario.carrito.length; j++) {
+                    if (usuario.carrito[i].libro.isbn = usuario.carrito[j].libro.isbn) {
+                        usuario.carrito[i].cantidad = usuario.carrito[i].cantidad + (+usuario.carrito[i].cantidad);
+                        usuario.carrito.splice(j, 1);
+                    }
+                }
+            }
+        }
         return arrayUsuario;
     });
 }

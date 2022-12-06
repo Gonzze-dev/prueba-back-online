@@ -18,12 +18,13 @@ const apollo_server_express_1 = require("apollo-server-express");
 const type_graphql_1 = require("type-graphql");
 const LibroResolver_1 = require("./schema/Resolvers/Libro/LibroResolver");
 const UsuarioResolver_1 = require("./schema/Resolvers/Usuario/UsuarioResolver");
+const TemaResolver_1 = require("./schema/Resolvers/Tema/TemaResolver");
 function startServer() {
     return __awaiter(this, void 0, void 0, function* () {
         const app = (0, express_1.default)();
         const server = new apollo_server_express_1.ApolloServer({
             schema: yield (0, type_graphql_1.buildSchema)({
-                resolvers: [LibroResolver_1.LibroResolver, UsuarioResolver_1.UsuarioResolver],
+                resolvers: [LibroResolver_1.LibroResolver, UsuarioResolver_1.UsuarioResolver, TemaResolver_1.TemaResolver],
                 validate: false
             }),
             context: ({ req, res }) => ({ req, res })

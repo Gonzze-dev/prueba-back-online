@@ -32,6 +32,7 @@ __decorate([
         onUpdate: 'CASCADE',
         eager: true
     }),
+    (0, typeorm_1.JoinColumn)({ name: 'isbn' }),
     __metadata("design:type", Libro_1.Libro)
 ], Linea_carrito.prototype, "libro", void 0);
 __decorate([

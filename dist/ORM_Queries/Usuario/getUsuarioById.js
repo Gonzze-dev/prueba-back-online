@@ -13,12 +13,22 @@ exports.getUsuarioById = void 0;
 const Usuario_1 = require("../../Entities/Usuario");
 function getUsuarioById(id) {
     return __awaiter(this, void 0, void 0, function* () {
-        const usuario = yield Usuario_1.Usuario.find({
+        const arrayUsuario = yield Usuario_1.Usuario.find({
+            relations: {
+                orden: {
+                    direccion_entrega: true
+                },
+                favorito: true,
+                carrito: {
+                    libro: true
+                }
+            },
             where: {
                 id: id
             }
         });
-        return usuario;
+        console.log(arrayUsuario[0]);
+        return arrayUsuario;
     });
 }
 exports.getUsuarioById = getUsuarioById;
