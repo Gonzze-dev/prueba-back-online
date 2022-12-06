@@ -1,8 +1,3 @@
-
-import jwt from 'jsonwebtoken'
-
-import { JWT_SECRET } from "../../config";
-
 import { Libro } from "../../Entities/Libro";
 import { Usuario } from "../../Entities/Usuario";
 
