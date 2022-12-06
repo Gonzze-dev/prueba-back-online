@@ -8,17 +8,17 @@ import { BaseEntity,
 @Entity()
 export class Tema extends BaseEntity
 {
-    @Field(type => ID)
+    @Field(type => ID, {nullable: true})
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Field()
+    @Field({nullable: true})
     @Column({
         unique: true
     })
     nombre!: string;
 
-    @Field()
+    @Field({nullable: true})
     @Column()
     url_imagen: string;
 }
