@@ -2,14 +2,25 @@ import { Usuario } from "../../Entities/Usuario";
 
 export async function getUsuarioById(id: number) 
 {
-    const usuario = await Usuario.find(
+    const arrayUsuario = await Usuario.find(
         {
+            relations:
+            {
+                orden:
+                {
+                    direccion_entrega: true
+                },
+                favorito: true,
+                carrito: {
+                    libro: true
+                }
+            },
             where:
             {
                 id: id
             }
         }
     )
-
-    return usuario
+    console.log(arrayUsuario[0])
+    return arrayUsuario
 }
