@@ -19,6 +19,9 @@ function InsertFav(isbn, tokenUser) {
         const msj = new SendUsuario_1.SendUsuario();
         try {
             const id = parseInt((0, jsonwebtoken_1.verify)(tokenUser, config_1.JWT_SECRET));
+            console.log('\n\n\n');
+            console.log(id);
+            console.log('\n\n\n');
             const usuario = yield (0, insertFav_1.insertFav)(isbn, id);
             msj.message = "Libro añadido a favoritos";
             msj.success = true;

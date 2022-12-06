@@ -21,12 +21,12 @@ __decorate([
     __metadata("design:type", Number)
 ], Provincia.prototype, "id", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Provincia.prototype, "nombre", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => Pais_1.Pais),
+    (0, type_graphql_1.Field)(type => Pais_1.Pais, { nullable: true }),
     (0, typeorm_1.ManyToOne)((type) => Pais_1.Pais, {
         onUpdate: 'CASCADE',
         eager: true

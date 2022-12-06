@@ -21,7 +21,7 @@ export class Ciudad extends BaseEntity
     @Column()
     nombre!: string;
 
-    @Field(type => Provincia)
+    @Field(type => Provincia, {nullable: true})
     @ManyToOne((type) => Provincia, (provincia) => provincia.id, {
         onUpdate: 'CASCADE',
         eager: true

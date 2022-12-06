@@ -15,11 +15,11 @@ export class Provincia extends BaseEntity
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Field()
+    @Field({nullable: true})
     @Column()
     nombre!: string;
     
-    @Field(type => Pais)
+    @Field(type => Pais, {nullable: true})
     @ManyToOne((type) => Pais, {
         onUpdate: 'CASCADE',
         eager: true

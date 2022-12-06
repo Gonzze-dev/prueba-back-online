@@ -22,23 +22,23 @@ import { Tema } from "./Tema";
 export class Libro extends BaseEntity
 {
     
-    @Field(type => ID)
+    @Field(type => ID, {nullable: true})
     @PrimaryColumn()
     isbn!: string;
 
-    @Field()
+    @Field({nullable: true})
     @Column('text')
     url_imagen!: string;
 
-    @Field()
+    @Field({nullable: true})
     @Column()
     titulo!: string;
 
-    @Field()
+    @Field({nullable: true})
     @Column()
     fecha_edicion!: string;
 
-    @Field(type => Float)
+    @Field(type => Float, {nullable: true})
     @Column({
         type: 'decimal',
         precision: 10, 
@@ -46,11 +46,11 @@ export class Libro extends BaseEntity
     })
     precio!: number;
 
-    @Field(type => Int)
+    @Field(type => Int, {nullable: true})
     @Column()
     stock!: number;
 
-    @Field()
+    @Field({nullable: true})
     @Column()
     descripcion!: string;
 
@@ -61,17 +61,16 @@ export class Libro extends BaseEntity
     })
     fecha_ingreso!: Date;
 
-    @Field(type => Float)
+    @Field(type => Float, {nullable: true})
     @Column({
         type: 'decimal',
         precision: 4, 
         scale: 2,
         nullable: true,
-        default: 0
     })
     descuento: number;
 
-    @Field(type => Editorial)
+    @Field(type => Editorial, {nullable: true})
     @ManyToOne(() => Editorial, (editorial) => editorial.id,
     {
         onUpdate: 'CASCADE',
@@ -82,7 +81,7 @@ export class Libro extends BaseEntity
     })
     editorial!: Editorial;
 
-    @Field(type => Idioma)
+    @Field(type => Idioma, {nullable: true})
     @ManyToOne(() => Idioma, (idioma) => idioma.id,
         {
             onUpdate: 'CASCADE',
@@ -93,7 +92,7 @@ export class Libro extends BaseEntity
     })
     idioma!: Idioma;
 
-    @Field(type => [Tema])
+    @Field(type => [Tema], {nullable: true})
     @ManyToMany((type) => Tema, {
         onUpdate: 'CASCADE',
         eager: true
@@ -109,7 +108,7 @@ export class Libro extends BaseEntity
     })
     tema!: Tema[];
 
-    @Field(type => [Autor])
+    @Field(type => [Autor], {nullable: true})
     @ManyToMany((type) => Autor, {
         onUpdate: 'CASCADE',
         eager: true

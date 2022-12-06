@@ -21,12 +21,12 @@ __decorate([
     __metadata("design:type", String)
 ], Puntuacion.prototype, "usuario_libro", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => type_graphql_1.Int),
+    (0, type_graphql_1.Field)(type => type_graphql_1.Int, { nullable: true }),
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Puntuacion.prototype, "puntuacion", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => Usuario_1.Usuario),
+    (0, type_graphql_1.Field)(type => Usuario_1.Usuario, { nullable: true }),
     (0, typeorm_1.ManyToOne)((type) => Usuario_1.Usuario, {
         onUpdate: 'CASCADE',
     }),

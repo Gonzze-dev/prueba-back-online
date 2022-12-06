@@ -54,14 +54,14 @@ export class Orden extends BaseEntity
     @JoinColumn({name: 'id_usuario'})
     usuario!: Usuario;
 
-    @Field(type => Direccion_entrega)
+    @Field(type => Direccion_entrega, {nullable: true})
     @ManyToOne((type) => Direccion_entrega, (direccion) => direccion.id, {
         onUpdate: 'CASCADE',
     })
     @JoinColumn({name: 'id_direccion_entrega'})
     direccion_entrega!: Direccion_entrega;
     
-    @Field(type => Orden_detalle)
+    @Field(type => Orden_detalle, {nullable: true})
     @OneToMany(() => Orden_detalle, (orden_detalle) => orden_detalle.orden, {
         onUpdate: 'CASCADE',
         eager: true

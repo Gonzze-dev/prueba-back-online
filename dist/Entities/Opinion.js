@@ -22,11 +22,11 @@ __decorate([
 ], Opinion.prototype, "usuario_libro", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    (0, typeorm_1.Column)('text'),
+    (0, typeorm_1.Column)('text', { nullable: true }),
     __metadata("design:type", String)
 ], Opinion.prototype, "comentario", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => Usuario_1.Usuario),
+    (0, type_graphql_1.Field)(type => Usuario_1.Usuario, { nullable: true }),
     (0, typeorm_1.ManyToOne)((type) => Usuario_1.Usuario, {
         onUpdate: 'CASCADE',
     }),

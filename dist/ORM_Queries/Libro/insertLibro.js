@@ -16,7 +16,7 @@ const insertEditorial_1 = require("../Editorial/insertEditorial");
 const insertIdioma_1 = require("../Idioma/insertIdioma");
 const insertTema_1 = require("../Tema/insertTema");
 const existsLibro_1 = require("./existsLibro");
-function insertLibro(isbn, imagen, titulo, fecha_edicion, precio, stock, descripcion, fecha_ingreso = '', descuento = 0, idioma, editorial, autor, tema) {
+function insertLibro(isbn, imagen, titulo, fecha_edicion, precio, stock, descripcion, fecha_ingreso = '', descuento = 0, idioma, editorial, autores, temas) {
     return __awaiter(this, void 0, void 0, function* () {
         const exists = yield (0, existsLibro_1.existsLibro)(isbn);
         const obj_libro = new Libro_1.Libro();
@@ -36,14 +36,32 @@ function insertLibro(isbn, imagen, titulo, fecha_edicion, precio, stock, descrip
             }
             obj_libro.idioma = yield (0, insertIdioma_1.insertIdioma)(idioma);
             obj_libro.editorial = yield (0, insertEditorial_1.insertEditorial)(editorial);
+            // const mapAutores = async (autores: any[]) => {
+            //     console.log('Start')
+            //     const promisesAutor = autores.map(async autor => {
+            //         const arrayAutor = await insertAutor(autor)
+            //         return arrayAutor
+            //     })
+            //     const autor = await Promise.all(promisesAutor)
+            //     return autor
+            // }
             obj_libro.autor = [];
-            autor.forEach((autor) => __awaiter(this, void 0, void 0, function* () {
+            for (const autor of autores) {
                 obj_libro.autor.push(yield (0, InsertAutor_1.insertAutor)(autor));
-            }));
+            }
             obj_libro.tema = [];
-            tema.forEach((tema) => __awaiter(this, void 0, void 0, function* () {
+            for (const tema of temas) {
                 obj_libro.tema.push(yield (0, insertTema_1.insertTema)(tema));
-            }));
+            }
+            // const mapTemas = async (temas: any[]) => 
+            // {
+            //     const promisesTemas = temas.map(async tema => {
+            //         const arrayTemas = await insertTema(tema)
+            //         return arrayTemas
+            //     })
+            //     const arrayTemas = await Promise.all(promisesTemas)
+            //     return arrayTemas
+            // }
             yield obj_libro.save();
         }
         return obj_libro;

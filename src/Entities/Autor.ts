@@ -10,11 +10,11 @@ import { BaseEntity,
 export class Autor extends BaseEntity
 {
 
-    @Field(type => ID)
+    @Field(type => ID, {nullable: true})
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Field()
+    @Field({nullable: true})
     @Column({
         unique: true
     })

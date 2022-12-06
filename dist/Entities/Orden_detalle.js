@@ -17,12 +17,12 @@ const type_graphql_1 = require("type-graphql");
 let Orden_detalle = class Orden_detalle extends typeorm_1.BaseEntity {
 };
 __decorate([
-    (0, type_graphql_1.Field)(type => type_graphql_1.ID),
+    (0, type_graphql_1.Field)(type => type_graphql_1.ID, { nullable: true }),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Orden_detalle.prototype, "id", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(type => type_graphql_1.Float, { nullable: true }),
     (0, typeorm_1.Column)({
         type: 'decimal',
         precision: 9,
@@ -31,19 +31,19 @@ __decorate([
     __metadata("design:type", Number)
 ], Orden_detalle.prototype, "precio", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => type_graphql_1.Int),
+    (0, type_graphql_1.Field)(type => type_graphql_1.Int, { nullable: true }),
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Orden_detalle.prototype, "cantidad", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)((type) => Orden_1.Orden, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
     }),
     (0, typeorm_1.JoinColumn)({ name: 'id_orden' }),
     __metadata("design:type", Orden_1.Orden)
 ], Orden_detalle.prototype, "orden", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => [Libro_1.Libro]),
+    (0, type_graphql_1.Field)(type => [Libro_1.Libro], { nullable: true }),
     (0, typeorm_1.ManyToOne)((type) => Libro_1.Libro, (libro) => libro.isbn, {
         onUpdate: 'CASCADE',
         eager: true

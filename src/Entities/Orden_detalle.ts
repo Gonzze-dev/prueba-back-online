@@ -15,11 +15,11 @@ import { type } from "os";
 export class Orden_detalle extends BaseEntity
 {
     
-    @Field(type => ID)
+    @Field(type => ID, {nullable: true})
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Field(type => Float)
+    @Field(type => Float, {nullable: true})
     @Column({
         type: 'decimal',
         precision: 9, 
@@ -27,17 +27,17 @@ export class Orden_detalle extends BaseEntity
     })
     precio!: number;
 
-    @Field(type => Int) 
+    @Field(type => Int, {nullable: true}) 
     @Column()
     cantidad!: number;
 
     @ManyToOne((type) => Orden, {
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
     })
     @JoinColumn({name: 'id_orden'})
     orden!: Orden;
 
-    @Field(type => [Libro])
+    @Field(type => [Libro], {nullable: true})
     @ManyToOne((type) => Libro, (libro) => libro.isbn, {
         onUpdate: 'CASCADE',
         eager: true

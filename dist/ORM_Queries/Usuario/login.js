@@ -13,7 +13,7 @@ exports.login = void 0;
 const Usuario_1 = require("../../Entities/Usuario");
 function login(correo, contrasenia) {
     return __awaiter(this, void 0, void 0, function* () {
-        const usuario = yield Usuario_1.Usuario.find({
+        const arrayUsuario = yield Usuario_1.Usuario.find({
             relations: {
                 orden: {
                     direccion_entrega: true
@@ -28,7 +28,22 @@ function login(correo, contrasenia) {
                 contrasenia: contrasenia
             }
         });
-        return usuario;
+        // const usuario = arrayUsuario[0]
+        // if (usuario && usuario.carrito )
+        // {
+        //     for (let i = 0; i < usuario.carrito.length; i++) 
+        //     {
+        //         for (let j = 0; j < usuario.carrito.length; j++) 
+        //         {
+        //             if (usuario.carrito[i].libro.isbn = usuario.carrito[j].libro.isbn)
+        //             {
+        //                 usuario.carrito[i].cantidad = usuario.carrito[i].cantidad + (+ usuario.carrito[i].cantidad)
+        //                 usuario.carrito[j].remove()
+        //             }
+        //         }
+        //     }
+        // }
+        return arrayUsuario;
     });
 }
 exports.login = login;

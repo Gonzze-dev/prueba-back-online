@@ -8,11 +8,11 @@ import { BaseEntity,
 @Entity()
 export class Editorial extends BaseEntity
 {
-    @Field(type => ID)
+    @Field(type => ID, {nullable: true})
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Field()
+    @Field({nullable: true})
     @Column({
         unique: true
     })

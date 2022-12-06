@@ -17,10 +17,10 @@ export class Opinion extends BaseEntity
     usuario_libro: string;
 
     @Field()
-    @Column('text')
+    @Column('text', {nullable: true})
     comentario!: string;
 
-    @Field(type => Usuario)
+    @Field(type => Usuario, {nullable: true})
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE',
     })

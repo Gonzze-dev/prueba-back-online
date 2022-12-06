@@ -3,10 +3,10 @@ import { Autor } from "../../Entities/Autor";
 import { existsName } from "../Utilities/exists";
 import { getElementByName } from "../Utilities/getElementByName";
 
-export async function insertAutor(nombreAutor: string): Promise<Autor>
+export async function insertAutor(nombreAutor: string)
 {
     
-    const existeAutor = existsName(nombreAutor, Autor);
+    const existeAutor = await existsName(nombreAutor, Autor);
     const obj_autor = new Autor();
 
     // const queryRunner = AppDataSource.createQueryRunner()

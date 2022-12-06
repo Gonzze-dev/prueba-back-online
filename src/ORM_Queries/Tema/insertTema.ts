@@ -2,7 +2,7 @@ import { Tema } from "../../Entities/Tema";
 import { existsName } from "../Utilities/exists";
 import { getElementByName } from "../Utilities/getElementByName";
 
-export async function insertTema(tema: any): Promise<Tema>
+export async function insertTema(tema: any)
 {
     const existeTema = await existsName(tema.nombre, Tema);
 

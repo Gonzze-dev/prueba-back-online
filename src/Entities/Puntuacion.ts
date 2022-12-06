@@ -16,11 +16,11 @@ export class Puntuacion extends BaseEntity
     @PrimaryColumn()
     usuario_libro: string;
     
-    @Field(type => Int)
+    @Field(type => Int, {nullable: true})
     @Column()
     puntuacion!: number;
 
-    @Field(type => Usuario)
+    @Field(type => Usuario, {nullable: true})
     @ManyToOne((type) => Usuario, {
         onUpdate: 'CASCADE',
     })

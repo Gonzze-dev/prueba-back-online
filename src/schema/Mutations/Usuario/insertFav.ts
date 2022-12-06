@@ -9,6 +9,9 @@ export async function InsertFav(isbn: string, tokenUser: string) {
 
 	try {
 		const id = parseInt(<string>verify(tokenUser, JWT_SECRET))
+		console.log('\n\n\n')
+		console.log(id)
+		console.log('\n\n\n')
 		const usuario = await insertFav(isbn, id);
 
 		msj.message = "Libro añadido a favoritos"

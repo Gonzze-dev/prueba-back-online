@@ -1,4 +1,5 @@
 import { AppDataSource } from "../../Connection/Connection";
+import { Autor } from "../../Entities/Autor";
 import { Libro } from "../../Entities/Libro"
 import { insertAutor } from "../Autor/InsertAutor";
 import { insertEditorial } from "../Editorial/insertEditorial";
@@ -17,8 +18,8 @@ export async function insertLibro(isbn: string,
                                     descuento: number = 0,
                                     idioma: string,
                                     editorial: string,
-                                    autor: Array<string>,
-                                    tema: Array<any>)
+                                    autores: Array<string>,
+                                    temas: Array<any>)
 {
 
     const exists = await existsLibro(isbn)
@@ -46,15 +47,40 @@ export async function insertLibro(isbn: string,
         obj_libro.idioma = await insertIdioma(idioma);
         obj_libro.editorial = await insertEditorial(editorial);
 
-        obj_libro.autor = []
-        autor.forEach(async autor => {
-            obj_libro.autor.push(await insertAutor(autor));
-        });
+
+        // const mapAutores = async (autores: any[]) => {
+        //     console.log('Start')
         
+        //     const promisesAutor = autores.map(async autor => {
+        //         const arrayAutor = await insertAutor(autor)
+        //         return arrayAutor
+        //     })
+            
+        //     const autor = await Promise.all(promisesAutor)
+
+        //     return autor
+        // }
+
+        obj_libro.autor = []
+        for (const autor of autores) {
+            obj_libro.autor.push(await insertAutor(autor))
+        }
+
         obj_libro.tema = []
-        tema.forEach(async tema => {
-            obj_libro.tema.push(await insertTema(tema));
-        });
+        for (const tema of temas) {
+            obj_libro.tema.push(await insertTema(tema))
+        }
+
+        // const mapTemas = async (temas: any[]) => 
+        // {
+        //     const promisesTemas = temas.map(async tema => {
+        //         const arrayTemas = await insertTema(tema)
+        //         return arrayTemas
+        //     })
+            
+        //     const arrayTemas = await Promise.all(promisesTemas)
+        //     return arrayTemas
+        // }
 
         await obj_libro.save()
     }

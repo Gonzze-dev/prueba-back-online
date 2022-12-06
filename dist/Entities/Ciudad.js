@@ -26,7 +26,7 @@ __decorate([
     __metadata("design:type", String)
 ], Ciudad.prototype, "nombre", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => Provincia_1.Provincia),
+    (0, type_graphql_1.Field)(type => Provincia_1.Provincia, { nullable: true }),
     (0, typeorm_1.ManyToOne)((type) => Provincia_1.Provincia, (provincia) => provincia.id, {
         onUpdate: 'CASCADE',
         eager: true

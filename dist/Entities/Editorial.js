@@ -15,12 +15,12 @@ const typeorm_1 = require("typeorm");
 let Editorial = class Editorial extends typeorm_1.BaseEntity {
 };
 __decorate([
-    (0, type_graphql_1.Field)(type => type_graphql_1.ID),
+    (0, type_graphql_1.Field)(type => type_graphql_1.ID, { nullable: true }),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Editorial.prototype, "id", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     (0, typeorm_1.Column)({
         unique: true
     }),

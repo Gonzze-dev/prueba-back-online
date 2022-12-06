@@ -2,7 +2,7 @@ import { Usuario } from "../../Entities/Usuario";
 
 export async function login(correo: string, contrasenia: string) 
 {
-    const usuario = await Usuario.find(
+    const arrayUsuario = await Usuario.find(
         {
             relations:
             {
@@ -22,6 +22,25 @@ export async function login(correo: string, contrasenia: string)
             }
         }
     )
+    
+    // const usuario = arrayUsuario[0]
 
-    return usuario
+    // if (usuario && usuario.carrito )
+    // {
+    //     for (let i = 0; i < usuario.carrito.length; i++) 
+    //     {
+    //         for (let j = 0; j < usuario.carrito.length; j++) 
+    //         {
+    //             if (usuario.carrito[i].libro.isbn = usuario.carrito[j].libro.isbn)
+    //             {
+    //                 usuario.carrito[i].cantidad = usuario.carrito[i].cantidad + (+ usuario.carrito[i].cantidad)
+    //                 usuario.carrito[j].remove()
+    //             }
+    //         }
+    //     }
+    // }
+    
+    
+
+    return arrayUsuario
 }

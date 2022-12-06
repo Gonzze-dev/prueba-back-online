@@ -21,27 +21,27 @@ const Tema_1 = require("./Tema");
 let Libro = class Libro extends typeorm_1.BaseEntity {
 };
 __decorate([
-    (0, type_graphql_1.Field)(type => type_graphql_1.ID),
+    (0, type_graphql_1.Field)(type => type_graphql_1.ID, { nullable: true }),
     (0, typeorm_1.PrimaryColumn)(),
     __metadata("design:type", String)
 ], Libro.prototype, "isbn", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     (0, typeorm_1.Column)('text'),
     __metadata("design:type", String)
 ], Libro.prototype, "url_imagen", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Libro.prototype, "titulo", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Libro.prototype, "fecha_edicion", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(type => type_graphql_1.Float, { nullable: true }),
     (0, typeorm_1.Column)({
         type: 'decimal',
         precision: 10,
@@ -50,12 +50,12 @@ __decorate([
     __metadata("design:type", Number)
 ], Libro.prototype, "precio", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => type_graphql_1.Int),
+    (0, type_graphql_1.Field)(type => type_graphql_1.Int, { nullable: true }),
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Libro.prototype, "stock", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    (0, type_graphql_1.Field)({ nullable: true }),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Libro.prototype, "descripcion", void 0);
@@ -68,17 +68,17 @@ __decorate([
     __metadata("design:type", Date)
 ], Libro.prototype, "fecha_ingreso", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => type_graphql_1.Float),
+    (0, type_graphql_1.Field)(type => type_graphql_1.Float, { nullable: true }),
     (0, typeorm_1.Column)({
         type: 'decimal',
         precision: 4,
         scale: 2,
-        nullable: true
+        nullable: true,
     }),
     __metadata("design:type", Number)
 ], Libro.prototype, "descuento", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => Editorial_1.Editorial),
+    (0, type_graphql_1.Field)(type => Editorial_1.Editorial, { nullable: true }),
     (0, typeorm_1.ManyToOne)(() => Editorial_1.Editorial, (editorial) => editorial.id, {
         onUpdate: 'CASCADE',
         eager: true
@@ -89,7 +89,7 @@ __decorate([
     __metadata("design:type", Editorial_1.Editorial)
 ], Libro.prototype, "editorial", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => Idioma_1.Idioma),
+    (0, type_graphql_1.Field)(type => Idioma_1.Idioma, { nullable: true }),
     (0, typeorm_1.ManyToOne)(() => Idioma_1.Idioma, (idioma) => idioma.id, {
         onUpdate: 'CASCADE',
         eager: true
@@ -100,7 +100,7 @@ __decorate([
     __metadata("design:type", Idioma_1.Idioma)
 ], Libro.prototype, "idioma", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => [Tema_1.Tema]),
+    (0, type_graphql_1.Field)(type => [Tema_1.Tema], { nullable: true }),
     (0, typeorm_1.ManyToMany)((type) => Tema_1.Tema, {
         onUpdate: 'CASCADE',
         eager: true
@@ -117,7 +117,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Libro.prototype, "tema", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => [Autor_1.Autor]),
+    (0, type_graphql_1.Field)(type => [Autor_1.Autor], { nullable: true }),
     (0, typeorm_1.ManyToMany)((type) => Autor_1.Autor, {
         onUpdate: 'CASCADE',
         eager: true

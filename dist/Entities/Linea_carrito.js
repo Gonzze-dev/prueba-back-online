@@ -22,12 +22,12 @@ __decorate([
     __metadata("design:type", Number)
 ], Linea_carrito.prototype, "nro_linea", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => String),
+    (0, type_graphql_1.Field)(type => type_graphql_1.Int),
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Linea_carrito.prototype, "cantidad", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => Libro_1.Libro),
+    (0, type_graphql_1.Field)(type => Libro_1.Libro, { nullable: true }),
     (0, typeorm_1.ManyToOne)((type) => Libro_1.Libro, (libro) => libro.isbn, {
         onUpdate: 'CASCADE',
         eager: true

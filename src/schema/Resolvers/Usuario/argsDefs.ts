@@ -30,8 +30,8 @@ export class ArgsSingUp
 export class ArgsInsertFav 
 {
     @Field()
-    isbn: string;
+    isbn: string = '';
 
     @Field()
-    tokenUser: string;
+    tokenUser: string = '';
 }

@@ -1,5 +1,5 @@
 
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, Int, ObjectType } from "type-graphql";
 import { BaseEntity,
         Column, 
         Entity, 
@@ -17,11 +17,11 @@ export class Linea_carrito extends BaseEntity
     @PrimaryGeneratedColumn()
     nro_linea!: number;
 
-    @Field(type => String)
+    @Field(type => Int)
     @Column()
     cantidad!: number;
     
-    @Field(type => Libro)
+    @Field(type => Libro, {nullable: true})
     @ManyToOne((type) => Libro, (libro) => libro.isbn, {
         onUpdate: 'CASCADE',
         eager: true

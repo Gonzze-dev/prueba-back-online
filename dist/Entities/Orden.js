@@ -57,7 +57,7 @@ __decorate([
     __metadata("design:type", Usuario_1.Usuario)
 ], Orden.prototype, "usuario", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => Direccion_entrega_1.Direccion_entrega),
+    (0, type_graphql_1.Field)(type => Direccion_entrega_1.Direccion_entrega, { nullable: true }),
     (0, typeorm_1.ManyToOne)((type) => Direccion_entrega_1.Direccion_entrega, (direccion) => direccion.id, {
         onUpdate: 'CASCADE',
     }),
@@ -65,7 +65,7 @@ __decorate([
     __metadata("design:type", Direccion_entrega_1.Direccion_entrega)
 ], Orden.prototype, "direccion_entrega", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => Orden_detalle_1.Orden_detalle),
+    (0, type_graphql_1.Field)(type => Orden_detalle_1.Orden_detalle, { nullable: true }),
     (0, typeorm_1.OneToMany)(() => Orden_detalle_1.Orden_detalle, (orden_detalle) => orden_detalle.orden, {
         onUpdate: 'CASCADE',
         eager: true
