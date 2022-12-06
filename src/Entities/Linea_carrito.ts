@@ -26,6 +26,7 @@ export class Linea_carrito extends BaseEntity
         onUpdate: 'CASCADE',
         eager: true
     })
+    @JoinColumn({name: 'isbn'})
     libro: Libro;
 
     @ManyToOne((type) => Usuario, {
