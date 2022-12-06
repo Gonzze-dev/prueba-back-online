@@ -10,6 +10,6 @@ export class SendTema
     @Field()
     success:boolean = false;
 
-    @Field(type => Tema, {nullable: true})
+    @Field(type => [Tema], {nullable: true})
     temas?: Tema[]
 }
