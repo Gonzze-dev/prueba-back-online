@@ -8,13 +8,13 @@ export async function insertTema(tema: any)
 
     const obj_tema = new Tema();
 
-    if (!existeTema)
-    {
-        obj_tema.nombre = tema.nombre;
-        obj_tema.url_imagen = tema.url_imagen;
+    // if (!existeTema)
+    // {
+    //     obj_tema.nombre = tema.nombre;
+    //     obj_tema.url_imagen = tema.url_imagen;
 
-        await obj_tema.save()
-    }
+    //     await obj_tema.save()
+    // }
 
 
     return await getElementByName(tema.nombre, Tema)

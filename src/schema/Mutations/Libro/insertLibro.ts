@@ -14,7 +14,7 @@ export async function InsertLibro(isbn: string,
 							idioma: string,
 							editorial: string,
 							autor: Array<string>,
-							temas: Array<any>)
+							temas: Array<string>)
 {
 	const msj = new SendLibro()
 	try {
