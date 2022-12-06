@@ -1,5 +1,3 @@
-import { AppDataSource } from "../../Connection/Connection";
-import { Autor } from "../../Entities/Autor";
 import { Libro } from "../../Entities/Libro"
 import { insertAutor } from "../Autor/InsertAutor";
 import { insertEditorial } from "../Editorial/insertEditorial";
