@@ -27,17 +27,8 @@ export class LibroResolver
                                 idioma,
                                 editorial,
                                 autor,
-                                tema,
-                                url_imagen_tema}: ArgsInsertLibro)
+                                tema}: ArgsInsertLibro)
     {
-        let temas = []
-
-        for (let index = 0; index < tema.length; index++) {
-            temas.push({
-                nombre: tema[index],
-                url_imagen: url_imagen_tema[index] 
-            });
-        }
 
         return await InsertLibro(isbn, 
                                 imagen,
@@ -51,6 +42,6 @@ export class LibroResolver
                                 idioma,
                                 editorial,
                                 autor,
-                                temas);
+                                tema);
     }
 }

@@ -53,7 +53,4 @@ export class ArgsInsertLibro
 
     @Field(type => [String])
     tema: Array<string>
-
-    @Field(type => [String])
-    url_imagen_tema: Array<string>
 }
