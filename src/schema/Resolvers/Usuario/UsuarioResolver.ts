@@ -9,6 +9,7 @@ import { ArgsInsertFav, ArgsLogin, ArgsSingUp } from "./argsDefs";
 import { InsertFav } from "../../Mutations/Usuario/insertFav";
 import { RealizarCompra } from "../../Mutations/Usuario/realizarCompra";
 import { SendMercadoPago } from "../../../SendTypes/SendMercadoPago";
+import { RemoveFav } from "../../Mutations/Usuario/removeFav";
 
 @Resolver()
 export class UsuarioResolver
@@ -29,6 +30,12 @@ export class UsuarioResolver
     async insertFav(@Args() {isbn, tokenUser}: ArgsInsertFav)
     {
         return await InsertFav(isbn, tokenUser);
+    }
+
+    @Mutation(() => SendUsuario)
+    async removeFav(@Args() {isbn, tokenUser}: ArgsInsertFav)
+    {
+        return await RemoveFav(isbn, tokenUser);
     }
 
     @Mutation(() => SendMercadoPago)
